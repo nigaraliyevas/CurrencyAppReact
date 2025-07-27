@@ -9,25 +9,27 @@ function App() {
   const [numberFrom, setNumberFrom] = useState(0);
   const [numberTo, setNumberTo] = useState(0);
 
+  const BASE_API = "https://api.freecurrencyapi.com/v1/latest?apikey=";
+  const API_KEY = import.meta.env.VITE_SOME_KEY;
   useEffect(() => {
-    const BASE_API = "https://api.freecurrencyapi.com/v1/latest?apikey=";
     const getKeysOfCurrency = async () => {
-      const response = await axios.get(BASE_API + import.meta.env.VITE_SOME_KEY);
+      const response = await axios.get(BASE_API + API_KEY);
       setCurrencyKey(response.data.data);
     };
     getKeysOfCurrency();
-  }, []);
+  }, [BASE_API,API_KEY]);
 
   const exchange = async () => {
     if (!currencyFrom || !currencyTo) {
       alert("please choose currensy field.");
       return;
     }
+    const selectedCurrency = await axios.get(`${BASE_API}${API_KEY}&base_currency=${currencyFrom}`);
+    
+    const rateFrom = selectedCurrency.data.data[currencyFrom];
+    
 
-    const rateFrom = currencyKey[currencyFrom];
-    console.log(currencyKey);
-
-    const rateTo = currencyKey[currencyTo];
+    const rateTo = selectedCurrency.data.data[currencyTo];
 
     if (!rateFrom || !rateTo) {
       alert("Invalid currency selection.");
