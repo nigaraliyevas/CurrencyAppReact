@@ -17,7 +17,7 @@ function App() {
       setCurrencyKey(response.data.data);
     };
     getKeysOfCurrency();
-  }, [BASE_API,API_KEY]);
+  }, [BASE_API, API_KEY]);
 
   const exchange = async () => {
     if (!currencyFrom || !currencyTo) {
@@ -25,19 +25,9 @@ function App() {
       return;
     }
     const selectedCurrency = await axios.get(`${BASE_API}${API_KEY}&base_currency=${currencyFrom}`);
-    
-    const rateFrom = selectedCurrency.data.data[currencyFrom];
-    
-
     const rateTo = selectedCurrency.data.data[currencyTo];
 
-    if (!rateFrom || !rateTo) {
-      alert("Invalid currency selection.");
-      return;
-    }
-
-    const convertedValue = (numberFrom / rateFrom) * rateTo;
-    setNumberTo(convertedValue.toFixed(2));
+    setNumberTo((numberFrom * rateTo).toFixed(2));
   };
 
   const handleSubmit = async ev => {
