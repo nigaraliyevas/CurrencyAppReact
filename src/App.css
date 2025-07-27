@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: hidden;
+}
+body {
+  background-image: url("https://vidhilegalpolicy.in/wp-content/uploads/2020/06/cryptocurrency-3085139_1920-1600x900.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 100%;
+}
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+.container {
+  padding: 0 250px;
+  position: relative;
+  height: 100dvh;
+  z-index: 1;
+}
+.container form {
+  height: 100%;
+  padding-top: 30%;
+}
+.container form h2 {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px black;
+  padding: 10px 0;
+}
+.container form input {
+  padding: 10px;
+  background-color: #eee;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.container form select {
+  padding: 10px;
+  background-color: #eee;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.currencyContainer {
+  background-color: rgba(255, 251, 251, 0.651);
+  padding: 20px;
+  border-radius: 10px;
+}
+.currencyFrom {
+}
+.button-container {
+  text-align: center;
+  padding-top: 20px;
+}
+.button-container button {
+  outline: none;
+  border: none;
+  background-color: gold;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  font-size: 16.5px;
+}
